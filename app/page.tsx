@@ -1,10 +1,29 @@
-import { Button } from "@/components/ui/button";
+// Components
+import CarouselBannerWraper from "@/components/CarouselBannerWraper";
+import MoviesCarousel from "@/components/MoviesCarousel";
 
-export default function Home() {
+// Services
+import {
+  getPopularMovies,
+  getTopRatedNovies,
+  getUpcomingMovies,
+} from "@/lib/getMovies";
+
+export default async function Home() {
+  const upcomingMovies = await getUpcomingMovies();
+  const topRatedNovies = await getTopRatedNovies();
+  const popularMovies = await getPopularMovies();
+
   return (
     <main className="">
-      <h1 className="text-red-500">Hello</h1>
-      <Button>Click Me</Button>
+      {/* CarouselBannerWraper */}
+      <CarouselBannerWraper />
+
+      <div className="flex flex-col space-y-2 xl:-mt-48">
+        <MoviesCarousel movies={upcomingMovies} title="Upcoming" />
+        <MoviesCarousel movies={topRatedNovies} title="Top Rated" />
+        <MoviesCarousel movies={popularMovies} title="Popular" />
+      </div>
     </main>
   );
 }
