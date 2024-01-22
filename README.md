@@ -1,3 +1,21 @@
+Hosted: https://next14-disney-plus-myjdk4pkk-rohangore1999.vercel.app/
+
+Tech: Next14 - [ ISR ]API Caching, Tailwindcss with ShadCN Components.
+
+Incremental Static Regeneration [ISR](https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration):
+
+`revalidate: 10, // In seconds`
+
+- Any requests to the page after the initial request and before 10 seconds are also cached and instantaneous.
+- After the 10-second window, the next request will still show the cached (stale) page
+- Next.js triggers a regeneration of the page in the background.
+- Once the page generates successfully, Next.js will invalidate the cache and show the updated page. If the background regeneration fails, the old page would still be unaltered.
+
+
+
+
+---------------------------------------------------------------------------------------------
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
